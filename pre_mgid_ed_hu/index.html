@@ -1,1 +1,428 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Férfi Egészség | Urológusok Felfedezték a Természetes Módszert</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #222;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        .top-nav {
+            background-color: #1a1a1a;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.88em;
+            font-weight: bold;
+        }
+        .top-nav a::after { content: " ▾"; font-size: 0.8em; }
+        .sub-nav {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+        .sub-nav .active {
+            color: #00a0b0;
+            font-weight: 900;
+            font-size: 0.88em;
+            text-decoration: none;
+            margin-right: 16px;
+            padding-right: 16px;
+            border-right: 1px solid #ddd;
+        }
+        .sub-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.88em;
+            margin-right: 20px;
+        }
+        .sub-nav a:hover { color: #00a0b0; }
+
+        /* CONTENT */
+        .content {
+            max-width: 960px;
+            margin: 28px auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER 2-col */
+        .article-header {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 30px;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+        .eyebrow {
+            font-weight: bold;
+            font-size: 0.95em;
+            color: #111;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: 900;
+            line-height: 1.15;
+            color: #111;
+            margin-bottom: 0;
+        }
+        .author-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding-top: 4px;
+        }
+        .author-box img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-info {
+            font-size: 0.82em;
+            color: #555;
+            line-height: 1.4;
+        }
+        .author-info strong { display: block; color: #222; font-size: 1em; }
+
+        /* SOCIAL */
+        .social-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+        .social-btn svg { width: 28px; height: 28px; }
+
+        /* DECK */
+        .deck {
+            font-size: 0.97em;
+            color: #333;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* HERO IMAGE */
+        .image-link {
+            display: block;
+            position: relative;
+            margin: 16px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .image-link img {
+            width: 100%;
+            display: block;
+        }
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            width: 80px;
+            height: 56px;
+            background: #ff0000;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-overlay svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            margin-left: 4px;
+        }
+        .watch-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #c00;
+            color: #fff;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.3em;
+            padding: 12px;
+            letter-spacing: 2px;
+        }
+        .badge-label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            font-weight: 900;
+            font-size: 0.82em;
+            padding: 5px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* INTRO */
+        .intro-p {
+            font-size: 0.97em;
+            color: #222;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            border-left: 4px solid #00a0b0;
+            background-color: #f5f5f5;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+        .highlight-box p {
+            font-size: 0.95em;
+            color: #222;
+            margin-bottom: 14px;
+            line-height: 1.65;
+        }
+        .highlight-box p:first-child {
+            font-weight: bold;
+            font-size: 1em;
+            color: #111;
+        }
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        /* READ CAREFULLY */
+        .read-carefully {
+            font-size: 0.88em;
+            color: #444;
+            margin: 20px 0 10px;
+        }
+
+        /* SPOTS */
+        .spots-counter {
+            text-align: center;
+            color: #c00;
+            font-weight: bold;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        /* CTA */
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 380px;
+            margin: 14px auto;
+            padding: 18px 20px;
+            background-color: #2ecc40;
+            color: #111;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 900;
+            border-radius: 6px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover { background-color: #27ae35; }
+
+        .expiry {
+            text-align: center;
+            color: #c00;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        /* FOOTER */
+        .footer-dark {
+            background-color: #1a1a1a;
+            color: #aaa;
+            padding: 30px 20px;
+            font-size: 0.78em;
+            margin-top: 50px;
+        }
+        .footer-cols {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .footer-cols h4 { color: #fff; margin-bottom: 10px; font-size: 0.9em; }
+        .footer-cols p { margin-bottom: 5px; line-height: 1.5; }
+        .footer-cols a { color: #aaa; text-decoration: underline; }
+        .disclaimers {
+            max-width: 800px;
+            margin: 0 auto;
+            border-top: 1px solid #333;
+            padding-top: 16px;
+        }
+        .disclaimers h5 {
+            color: #ccc;
+            margin: 12px 0 4px;
+            font-size: 0.82em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .disclaimers p { font-size: 0.82em; color: #777; margin-bottom: 6px; line-height: 1.5; }
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 0.78em;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 700px) {
+            .article-header { grid-template-columns: 1fr; }
+            .author-box { margin-top: 0; }
+            h1 { font-size: 1.45em; }
+            .top-nav { flex-wrap: wrap; gap: 14px; }
+            .footer-cols { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-nav">
+    <a href="#">Egészségi állapotok</a>
+    <a href="#">Wellness</a>
+    <a href="#">Eszközök</a>
+    <a href="#">Kiemelt</a>
+    <a href="#">Kapcsolat</a>
+</div>
+<div class="sub-nav">
+    <a href="#" class="active">FÉRFI EGÉSZSÉG</a>
+    <a href="#">Teljesítmény</a>
+    <a href="#">Hormonok</a>
+    <a href="#">POV</a>
+    <a href="#">Aktivitás</a>
+    <a href="#">Kapcsolatok</a>
+</div>
+
+<div class="content">
+
+    <div class="article-header">
+        <div>
+            <p class="eyebrow">A gyógyszeripar utálja ezt!</p>
+            <h1>Urológusok Felfedezték a Természetes Ló-Trükköt — 8X Erősebb, Mint a Viagra — Kőkemény Erekciókhoz és Nagyobb Méretre, Szívkockázat Nélkül! (Nézd meg)</h1>
+        </div>
+        <div class="author-box">
+            <img src="./img/author.webp" alt="Dr. Kovács Anna">
+            <div class="author-info">
+                <strong>Dr. Kovács Anna</strong>
+                2026.07.30 · Frissítve 2 órával ezelőtt
+            </div>
+        </div>
+    </div>
+
+    <div class="social-row">
+        <button class="social-btn">
+            <svg viewBox="0 0 24 24" fill="#1877f2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </button>
+        <button class="social-btn">
+            <svg viewBox="0 0 24 24" fill="#25d366"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </button>
+    </div>
+
+    <p class="deck">Nyomd meg a tested "erekciós gombját" — és éld át az életed leghosszabb, legkeményebb és legtartósabb erakcióit. Nézd meg a részleteket a virális videóban.</p>
+
+    <a href="https://lp.hyperelitedigital.shop/preclick" class="image-link">
+        <img src="./img/heroed.webp" alt="A ló-trükk eredménye">
+        <div class="badge-label">MEGDÖBBENTŐ EREDMÉNYEK!</div>
+        <div class="play-overlay">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="watch-bar">NÉZD MEG MOST</div>
+    </a>
+
+    <p class="intro-p">Magyar urológiai kutatók vezető csoportja most megrázta a milliárd dolláros kék tabletta iparát — felfedve egy természetes módszer részleteit, amely 8x erősebb, mint a Viagra, a Tadalafil és a Cialis együttesen.</p>
+
+    <div class="highlight-box">
+        <p>Nézd meg a videót, mielőtt eltávolítják!</p>
+        <p>A szakértők "Erekciós Gombnak" hívják ezt — egyszerű és 100% természetes módszer, tabletták, injekciók vagy invazív kezelések nélkül.</p>
+        <p>Mindössze aktiválnod kell ezt a rejtett gombot a saját testedben, amely azonnal felszabadítja a véráramlást, megtisztítja az eltömődött ereket — ez az erekciós diszfunkció valódi oka.</p>
+        <p>Ez a módszer már több mint 14 230 magyar férfinak segített végleg búcsút mondani az erekciós problémáknak — 100% természetesen és otthon maradva.</p>
+        <p>Sem gyógyszer, sem műtét, sem drága konzultáció. És olyan egyszerű, hogy kevesebb mint 15 másodpercet vesz igénybe.</p>
+    </div>
+
+    <a href="https://lp.hyperelitedigital.shop/preclick" class="image-link">
+        <img src="./img/img2ed.webp" alt="Előtte és utána">
+        <div class="badge-label">ELŐTTE X UTÁNA</div>
+        <div class="play-overlay">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="watch-bar">NÉZD MEG MOST</div>
+    </a>
+
+    <p class="read-carefully">Olvasd el figyelmesen.</p>
+    <p class="spots-counter">Szabad helyek az ingyenes bemutatóhoz: 96</p>
+
+    <a href="https://lp.hyperelitedigital.shop/preclick" class="cta-button">
+        Nézd Meg Most a Bemutatót
+    </a>
+
+    <p class="expiry">A videó 2026.07.30-án offline kerül</p>
+
+</div>
+
+<div class="footer-dark">
+    <div class="footer-cols">
+        <div>
+            <h4>Vállalat</h4>
+            <p><strong>SZERZŐDŐ FÉL:</strong> FONTS NEXUS LTDA</p>
+            <p><strong>CNPJ:</strong> 67.232.158/0001-68</p>
+            <p><strong>E-mail:</strong> <a href="mailto:contato@hyperelitedigital.com.br">contato@hyperelitedigital.com.br</a></p>
+        </div>
+        <div>
+            <h4>Információ</h4>
+            <p><a href="#">Tudományos cikkek</a></p>
+            <p><a href="./terms.html">Felhasználási feltételek</a></p>
+            <p><a href="./privacy.html">Adatvédelmi irányelvek</a></p>
+        </div>
+    </div>
+    <div class="disclaimers">
+        <h5>Jogi nyilatkozat</h5>
+        <p>Szigorúan tilos ezen az oldalon található képeket vagy szövegeket másolni vagy reprodukálni. Az értékesítés 18 éven aluliak számára tilos. Az eredmények személyenként eltérhetnek.</p>
+        <h5>Egészségügyi nyilatkozat</h5>
+        <p>Ez a weboldal NEM orvosi tanácsadásra szolgál, és nem helyettesíti a licencelt egészségügyi szakember útmutatását. <strong>A bemutatott személyek és történetek illusztratív célokat szolgálnak.</strong></p>
+        <h5>Marketingközlés</h5>
+        <p>Ez a weboldal piactérként működik. A tulajdonosnak pénzügyi kapcsolata van az ezen az oldalon hirdetett termékekkel és szolgáltatásokkal.</p>
+        <h5>Reklámközlés</h5>
+        <p>Ez egy hirdetés, nem hírközlemény. Az oldalon szereplő személyek modellek.</p>
+    </div>
+    <p class="copyright">© 2025 FONTS NEXUS LTDA. Minden jog fenntartva.</p>
+</div>
+
+<script type="text/javascript" src="https://lp.hyperelitedigital.shop/pretrack.js?rtkcmpid=XXXXXXX"></script>
+</body>
+</html>
 
